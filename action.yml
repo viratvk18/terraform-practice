@@ -23,7 +23,7 @@ inputs:
     required: false
 runs:
   using: 'node12'
-  main: 'src/index.ts'
+  main: 'dist/index.js'
 branding:
   icon: 'activity'
   color: 'green'
