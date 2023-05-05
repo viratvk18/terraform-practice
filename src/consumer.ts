@@ -8,8 +8,8 @@ export type CloudWatchLogsConsumerOptions = {
   retentionInDays?: number;
 };
 
-const MAX_RECORDS = 5000;
-const MAX_SIZE = 1024 * 800; // 800 KB
+const MAX_RECORDS = 25000;
+const MAX_SIZE = 1024 * 8000; // 8000 KB
 const MAX_DELAY = 5000; // 5 sec
 
 export class CloudWatchLogsConsumer {
