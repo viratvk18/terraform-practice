@@ -27045,8 +27045,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CloudWatchLogsConsumer = void 0;
 const async_sema_1 = __webpack_require__(654);
 const CloudWatchLogs = __webpack_require__(227);
-const MAX_RECORDS = 25000;
-const MAX_SIZE = 1024 * 8000; // 8000 KB
+const MAX_RECORDS = 50000;
+const MAX_SIZE = 1024 * 1000; // 8000 KB
 const MAX_DELAY = 5000; // 5 sec
 class CloudWatchLogsConsumer {
     constructor(options) {
