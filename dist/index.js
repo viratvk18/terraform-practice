@@ -27050,7 +27050,7 @@ const MAX_SIZE = 1024 * 1000; // 8000 KB
 const MAX_DELAY = 5000; // 5 sec
 class CloudWatchLogsConsumer {
     constructor(options) {
-        this.sema = new async_sema_1.Sema(1, { capacity: 512 });
+        this.sema = new async_sema_1.Sema(10, { capacity: 512 });
         this.flushedAt = Date.now();
         this.initialized = false;
         this.buffer = [];
