@@ -8,8 +8,8 @@ export type CloudWatchLogsConsumerOptions = {
   retentionInDays?: number;
 };
 
-const MAX_RECORDS = 50000;
-const MAX_SIZE = 1024 * 1000; // 8000 KB
+const MAX_RECORDS = 5000;
+const MAX_SIZE = 1024 * 800; // 8000 KB
 const MAX_DELAY = 5000; // 5 sec
 
 export class CloudWatchLogsConsumer {
@@ -18,7 +18,7 @@ export class CloudWatchLogsConsumer {
   private readonly stream: string;
   private readonly retentionInDays?: number;
 
-  private readonly sema = new Sema(1, { capacity: 512 });
+  private readonly sema = new Sema(10, { capacity: 512 });
   private flushedAt: number = Date.now();
   private initialized = false;
   private sequenceToken?: string;
