@@ -27050,7 +27050,7 @@ const MAX_SIZE = 1024 * 800; // 8000 KB
 const MAX_DELAY = 5000; // 5 sec
 class CloudWatchLogsConsumer {
     constructor(options) {
-        this.sema = new async_sema_1.Sema(100, { capacity: 512 });
+        this.sema = new async_sema_1.Sema(10, { capacity: 512 });
         this.flushedAt = Date.now();
         this.initialized = false;
         this.buffer = [];
@@ -27059,6 +27059,12 @@ class CloudWatchLogsConsumer {
         this.group = options.group;
         this.stream = options.stream;
         this.retentionInDays = options.retentionInDays;
+        this.cwlogs.config.params = {
+            logGroupName: this.group,
+            logStreamName: this.stream,
+            filterName: 'remove-ansi-escape-codes',
+            filterPattern: '[^\\x20-\\x7E]*',
+        };
     }
     async consume(line) {
         if (line.length > 0) {
