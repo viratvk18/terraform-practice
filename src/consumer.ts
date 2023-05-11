@@ -31,6 +31,13 @@ export class CloudWatchLogsConsumer {
     this.group = options.group;
     this.stream = options.stream;
     this.retentionInDays = options.retentionInDays;
+
+    this.cwlogs.config.params = {
+      logGroupName: this.group,
+      logStreamName: this.stream,
+      filterName: 'remove-ansi-escape-codes',
+      filterPattern: '[^\\x20-\\x7E]*',
+    };
   }
 
   public async consume(line: string) {
